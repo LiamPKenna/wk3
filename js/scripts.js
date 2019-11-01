@@ -7,8 +7,10 @@ function beepToHtml(beepArray) {
 
 // MAIN LOGIC
 function beepBoop(num, name) {
+  // TODO: pull into seperate function
   let number = parseInt(num);
   if (isNaN(number)) return "Please Enter A Number!";
+
   let beepArray = [];
   for (let i = 0; i <= number; i++) {
     if (/[3]/.test(i)) {
@@ -23,6 +25,11 @@ function beepBoop(num, name) {
   }
   let beepHtml = beepToHtml(beepArray)
   return beepHtml;
+}
+
+function randomizer(number) {
+
+
 }
 
 // UI
