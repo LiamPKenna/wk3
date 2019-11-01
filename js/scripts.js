@@ -1,6 +1,14 @@
 // GLOBAL VARIABLES
 
 // TEMPLATING
+function makeListItem(string) {
+  return `<li>${string}</li>`
+}
+
+function beepToHtml(beepArray) {
+  const beepListItems = beepArray.map(makeListItem);
+  return `<ul> ${beepListItems.join('')} </ul>`
+}
 
 // MAIN LOGIC
 
@@ -9,16 +17,18 @@ function beepBoop(num) {
   if (isNaN(number)) return "Please Enter A Number!";
   const beepArray = [];
   for (let i = 0; i < number; i++) {
-    beepArray.push(i);
-    // if (/[3]/.test(i)) {
-    //   beepArray.push("I'm sorry, Dave. I'm afraid I can't do that.");
-    // } else if (/[2]/.test(i)) {
-    //   beepArray.push("Boop!");
-    // } else if (/[1]/.test(i)) {
-    //   beepArray.push("Beep!");
-    // }
+    if (/[3]/.test(i)) {
+      beepArray.push("I'm sorry, Dave. I'm afraid I can't do that.");
+    } else if (/[2]/.test(i)) {
+      beepArray.push("Boop!");
+    } else if (/[1]/.test(i)) {
+      beepArray.push("Beep!");
+    } else {
+      beepArray.push(i);
+    }
   }
-  return beepArray
+  const beepHtml = beepToHtml(beepArray)
+  return beepHtml;
 }
 
 // UI
@@ -26,7 +36,7 @@ $(document).ready(function() {
 
   $("#userInput").submit(function(event) {
     event.preventDefault();
-    $('#results').text(beepBoop(25));
+    $('#results').append(beepBoop(25));
   });
 
 });
