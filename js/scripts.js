@@ -73,6 +73,14 @@ function toBinary(intInput) {
   return parseInt(matrix.join(''));
 };
 
+function factorial(number) {
+	function recursiveFactorial(number, a) {
+		if (number < 1) return a;
+  	return recursiveFactorial(number - 1, number * a);
+	};
+	return recursiveFactorial(number, 1);
+};
+
 // UI
 $(document).ready(function() {
 
