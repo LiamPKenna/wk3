@@ -12,13 +12,13 @@ function beepToHtml(beepArray) {
 
 // MAIN LOGIC
 
-function beepBoop(num) {
+function beepBoop(num, name) {
   var number = parseInt(num);
   if (isNaN(number)) return "Please Enter A Number!";
   const beepArray = [];
   for (let i = 0; i < number; i++) {
     if (/[3]/.test(i)) {
-      beepArray.push("I'm sorry, Dave. I'm afraid I can't do that.");
+      beepArray.push(`I'm sorry, ${name}. I'm afraid I can't do that.`);
     } else if (/[2]/.test(i)) {
       beepArray.push("Boop!");
     } else if (/[1]/.test(i)) {
@@ -36,7 +36,10 @@ $(document).ready(function() {
 
   $("#userInput").submit(function(event) {
     event.preventDefault();
-    $('#results').append(beepBoop(25));
+    let userNumber = $("#userNumber").val();
+    let userName = $("#userName").val();
+    let beepBoopResults = beepBoop(userNumber, userName);
+    $('#results').append(beepBoopResults);
   });
 
 });
