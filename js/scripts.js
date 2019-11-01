@@ -37,14 +37,19 @@ function beepBoop(number, name, reversed) {
 }
 
 function randomizer(number) {
-  if (number % 2 === 0) {
-    return 0;
-  } else if (number % 3 === 0) {
-    return 1;
-  } else if (number % 5 === 0) {
-    return 2;
+  let random = Math.round(Math.random() * 4);
+  if (Math.round(Math.random()) === 0 && number) {
+    if (number % 2 === 0) {
+      return 0;
+    } else if (number % 3 === 0) {
+      return 1;
+    } else if (number % 5 === 0) {
+      return 2;
+    } else {
+      return 3;
+    }
   } else {
-    return 3;
+    return random;
   }
 }
 
@@ -74,12 +79,14 @@ function toBinary(intInput) {
 };
 
 function factorial(number) {
-	function recursiveFactorial(number, a) {
-		if (number < 1) return a;
-  	return recursiveFactorial(number - 1, number * a);
+	function recursiveFactorial(number, accumulator) {
+		if (number < 1) return accumulator;
+  	return recursiveFactorial(number - 1, number * accumulator);
 	};
 	return recursiveFactorial(number, 1);
 };
+
+
 
 // UI
 $(document).ready(function() {
@@ -89,6 +96,8 @@ $(document).ready(function() {
     let userNumber = parseInt($("#userNumber").val());
     let userName = $("#userName").val();
     let reverse = $('#reverse').is(":checked");
+    let randomNumber = randomizer(userNumber);
+    console.log(randomNumber);
     if (userName && userNumber) {
       let binary = toBinary(userNumber);
       $('#binary').text(`${userName} said ${binary}`);
@@ -97,7 +106,7 @@ $(document).ready(function() {
     let beepBoopResults = (userName && userNumber) ?
                           beepBoop(userNumber, userName, reverse) :
                           "<h2>PLEASE GIVE ME A NAME AND NUMBER!</h2>";
-    let backgroundColor = backgroundColors[randomizer(userNumber)];
+    let backgroundColor = backgroundColors[randomNumber];
     $('body').css('background-color', backgroundColor);
     $('#roboResults').text('');
     $('#results').hide();
