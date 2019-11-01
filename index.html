@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/jquery-3.4.1.js" type="text/javascript"></script>
     <script src="js/scripts.js" type="text/javascript"></script>
-    <title>Arrays & Looping</title>
+    <title>Beep Boop: Arrays & Looping</title>
   </head>
   <body>
     <div class="container main">
@@ -47,6 +47,9 @@
         </div>
       </div>
     </div>
+    <div class="circuit-image">
+      <img id="circuit" src="img/circuit-board.jpg" alt="circuit board">
+    </div>
     <div class="footer">
       <p>test</p>
     </div>
@@ -55,19 +58,25 @@
 
 <!--
 
-Create a web application that takes a number from a user and returns a range of numbers from 0 to the user inputted number with the following exceptions:
+Takes a number from a user (n)
+Returns a range of numbers from 0 to n
 
-Numbers that contain a 1: all digits are replaced (all digits) with "Beep!"
-Numbers that contain a 2: all digits are replaced (all digits) with "Boop!"
-Numbers that contain a 3: all digits are replaced (all digits) with "I'm sorry, Dave. I'm afraid I can't do that."
-These exceptions are written from least to most important. The first exception should apply unless the second exception does, and the same with the second and third. So, for example, in your finished program,
+Exceptions:
 
-The number 13 should be replaced with "I'm sorry, Dave. I'm afraid I can't do that."
-The number 21 should be replaced with "Boop".
-The number 32 should be replaced with "I'm sorry, Dave. I'm afraid I can't do that."
-A user should be able to enter a new number and see new results over and over again.
+n contains 1: replace with "Beep!"
+n contains 2: replace with "Boop!"
+n contains 3: replace with "I'm sorry, {name}. I'm afraid I can't do that."
 
-Example: If a user inputs a 5, the program should display a list of values: "0", "Beep!", "Boop", "I'm Sorry...", 4, 5
+These exceptions overwrite each other with importance 3>2>1
+
+13 = I'm sorry
+21 = Boop
+32 = I'm sorry
+
+Restart should nor require reloading the page
+
+Input 5:
+Output: "0", "Beep!", "Boop", "I'm Sorry...", 4, 5
 
 Specs
 Break the program down into simple, individual behaviors with input/output examples. Begin with the simplest possible behavior. List these behaviors (also known as "specs" or "specifications") in the project's README.md file. To get you started, this should be one of your first specs:
