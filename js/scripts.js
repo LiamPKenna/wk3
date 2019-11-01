@@ -28,8 +28,15 @@ function beepBoop(num, name) {
 }
 
 function randomizer(number) {
-
-
+  if (number % 2 === 0) {
+    return 1;
+  } else if (number % 3 === 0) {
+    return 2;
+  } else if (number % 5 === 0) {
+    return 3;
+  } else {
+    return 4;
+  }
 }
 
 // UI
