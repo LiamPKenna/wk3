@@ -6,16 +6,18 @@ var backgroundColors = [
   "#2f4035"
 ];
 
+
 // TEMPLATING
 function beepToHtml(beepArray) {
-  return `<p> ${beepArray.join(' - ')} </p>`
-}
+  return `<p> ${beepArray.join(' - ')} </p>`;
+};
 
 const robotText = {
   1: "Beep!",
   2: "Boop!",
-  3: function(name) {return `I'm sorry, ${name}. I'm afraid I can't do that.`}
+  3: function(name) {return `I'm sorry, ${name}. I'm afraid I can't do that.`;}
 };
+
 
 // MAIN LOGIC
 function beepBoop(number, name, reversed) {
@@ -30,11 +32,11 @@ function beepBoop(number, name, reversed) {
     } else {
       beepArray.push(i);
     }
-  }
+  };
   if (reversed) beepArray.reverse();
-  let beepHtml = beepToHtml(beepArray)
+  let beepHtml = beepToHtml(beepArray);
   return beepHtml;
-}
+};
 
 function randomizer(number) {
   if (Math.round(Math.random()) === 0 && number) {
@@ -51,10 +53,9 @@ function randomizer(number) {
     let random = Math.round(Math.random() * 3);
     return random;
   }
-}
+};
 
 function toBinary(number) {
-  if (isNaN(number)) return number;
   if (number < 2) return number;
   function getBitAndMatrix(number) {
     let matrix = [0,0];
@@ -62,9 +63,9 @@ function toBinary(number) {
     while ((currentMaxBit * 2) <= number) {
       currentMaxBit *= 2;
       matrix.push(0);
-    }
+    };
     return [currentMaxBit, matrix];
-  }
+  };
   let bitMatrixArray = getBitAndMatrix(number);
   let maxBit = bitMatrixArray[0];
   let matrix = bitMatrixArray[1];
@@ -88,11 +89,11 @@ function factorial(number) {
 
 function digitSwap(number) {
   let numberString = number + '';
-  if (numberString.length < 2) return numberString;
+  if (numberString.length < 2) return `Backwards it's still ${numberString}`;
   let digitArray = numberString.split('');
   let resultArray = [];
   digitArray.forEach(function(digit) {
-    resultArray.unshift(digit)
+    resultArray.unshift(digit);
   });
   return `Digit Swapped: ${resultArray.join('')}`;
 }
@@ -114,6 +115,7 @@ const bonusFunctions = [
   digitSwap
 ];
 
+
 // UI
 $(document).ready(function() {
 
@@ -127,7 +129,7 @@ $(document).ready(function() {
       let bonus = bonusFunctions[randomNumber](userNumber);
       $('#bonus').text(`${userName} said ${userNumber} (${bonus})`);
       $('#bonusDiv').fadeIn();
-    }
+    };
     let beepBoopResults = (userName && userNumber) ?
                           beepBoop(userNumber, userName, reverse) :
                           "<h2>PLEASE GIVE ME A NAME AND NUMBER!</h2>";
@@ -150,20 +152,3 @@ $(document).ready(function() {
   });
 
 });
-
-
-/*
-JavaScript business logic and user interface logic are separate.
-
-Logic is broken down into "plain English" specs, listed in README.
-
-Required functionality is in place by Friday deadline.
-
-Project demonstrates understanding of this week's concepts. If prompted, you are able to discuss your code with an instructor using correct terminology.
-
-Application implements a loop and works as expected.
-
-All previous standards are in place (see below).
-
-The user can use the app repeatedly and see new results.
-*/
