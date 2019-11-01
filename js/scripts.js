@@ -1,4 +1,10 @@
 // GLOBAL VARIABLES
+var backgroundColors = [
+  "#362f40",
+  "#402f32",
+  "#2f4035",
+  "#2f4035"
+];
 
 // TEMPLATING
 function beepToHtml(beepArray) {
@@ -6,11 +12,7 @@ function beepToHtml(beepArray) {
 }
 
 // MAIN LOGIC
-function beepBoop(num, name) {
-  // TODO: pull into seperate function
-  let number = parseInt(num);
-  if (isNaN(number)) return "Please Enter A Number!";
-
+function beepBoop(number, name) {
   let beepArray = [];
   for (let i = 0; i <= number; i++) {
     if (/[3]/.test(i)) {
@@ -29,13 +31,13 @@ function beepBoop(num, name) {
 
 function randomizer(number) {
   if (number % 2 === 0) {
-    return 1;
+    return 0;
   } else if (number % 3 === 0) {
-    return 2;
+    return 1;
   } else if (number % 5 === 0) {
-    return 3;
+    return 2;
   } else {
-    return 4;
+    return 3;
   }
 }
 
@@ -44,11 +46,13 @@ $(document).ready(function() {
 
   $("#userInput").submit(function(event) {
     event.preventDefault();
-    let userNumber = $("#userNumber").val();
+    let userNumber = parseInt($("#userNumber").val());
     let userName = $("#userName").val();
     let beepBoopResults = (userName && userNumber) ?
                           beepBoop(userNumber, userName) :
                           "<h2>PLEASE GIVE ME A NAME AND NUMBER!</h2>";
+    let backgroundColor = backgroundColors[randomizer(userNumber)];
+    $('body').css('background-color', backgroundColor);
     $('#results').text('');
     $('#results').hide();
     $('#userInput').hide();
