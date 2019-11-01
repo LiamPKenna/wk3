@@ -85,6 +85,30 @@ body {
   }
 }
 
+#circuit {
+  margin-top: 50px;
+  animation: fadeInAndOut 10s linear infinite;
+  width: 100%
+}
+
+@keyframes fadeInAndOut {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  70% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 .footer {
   display: none;
   height: 40px;
