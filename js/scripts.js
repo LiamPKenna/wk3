@@ -12,7 +12,7 @@ function beepToHtml(beepArray) {
 }
 
 // MAIN LOGIC
-function beepBoop(number, name) {
+function beepBoop(number, name, reversed) {
   let beepArray = [];
   for (let i = 0; i <= number; i++) {
     if (/[3]/.test(i)) {
@@ -25,6 +25,7 @@ function beepBoop(number, name) {
       beepArray.push(i);
     }
   }
+  if (reversed) beepArray.reverse();
   let beepHtml = beepToHtml(beepArray)
   return beepHtml;
 }
@@ -48,8 +49,9 @@ $(document).ready(function() {
     event.preventDefault();
     let userNumber = parseInt($("#userNumber").val());
     let userName = $("#userName").val();
+    let reverse = $('#reverse').is(":checked");
     let beepBoopResults = (userName && userNumber) ?
-                          beepBoop(userNumber, userName) :
+                          beepBoop(userNumber, userName, reverse) :
                           "<h2>PLEASE GIVE ME A NAME AND NUMBER!</h2>";
     let backgroundColor = backgroundColors[randomizer(userNumber)];
     $('body').css('background-color', backgroundColor);
