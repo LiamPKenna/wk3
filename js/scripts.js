@@ -79,10 +79,13 @@ $(document).ready(function() {
   $("#userInput").submit(function(event) {
     event.preventDefault();
     let userNumber = parseInt($("#userNumber").val());
-    let binary = toBinary(userNumber);
-    console.log(binary);
     let userName = $("#userName").val();
     let reverse = $('#reverse').is(":checked");
+    if (userName && userNumber) {
+      let binary = toBinary(userNumber);
+      $('#binary').text(`${userName} said ${binary}`);
+      $('#binaryDiv').fadeIn();
+    }
     let beepBoopResults = (userName && userNumber) ?
                           beepBoop(userNumber, userName, reverse) :
                           "<h2>PLEASE GIVE ME A NAME AND NUMBER!</h2>";
@@ -98,6 +101,7 @@ $(document).ready(function() {
 
   $('#goAgain').click(function() {
     $('#goAgain').hide();
+    $('#binaryDiv').hide();
     $('#results').hide();
     $('#userInput').fadeIn();
   });
