@@ -37,7 +37,6 @@ function beepBoop(number, name, reversed) {
 }
 
 function randomizer(number) {
-  let random = Math.round(Math.random() * 3);
   if (Math.round(Math.random()) === 0 && number) {
     if (number % 2 === 0) {
       return 0;
@@ -49,6 +48,7 @@ function randomizer(number) {
       return 3;
     }
   } else {
+    let random = Math.round(Math.random() * 3);
     return random;
   }
 }
@@ -137,8 +137,8 @@ $(document).ready(function() {
     $('#userInput').hide();
     $('#goAgain').fadeIn();
     $('#roboResults').append(beepBoopResults);
-    $('.footer').text('').append(beepBoopResults).fadeIn();
     $('#results').hide().fadeIn();
+    if (userName && userNumber) $('.footer').text('').append(beepBoopResults).fadeIn();
   });
 
   $('#goAgain').click(function() {
