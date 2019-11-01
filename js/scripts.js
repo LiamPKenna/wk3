@@ -53,9 +53,9 @@ function randomizer(number) {
   }
 }
 
-function toBinary(intInput) {
-  if (isNaN(intInput)) return intInput;
-  if (intInput < 2) return intInput;
+function toBinary(number) {
+  if (isNaN(number)) return number;
+  if (number < 2) return number;
   function getBitAndMatrix(number) {
     let matrix = [0,0];
     let currentMaxBit = 2;
@@ -65,17 +65,17 @@ function toBinary(intInput) {
     }
     return [currentMaxBit, matrix];
   }
-  let bitMatrixArray = getBitAndMatrix(intInput);
+  let bitMatrixArray = getBitAndMatrix(number);
   let maxBit = bitMatrixArray[0];
   let matrix = bitMatrixArray[1];
   for (var i = 0; i < matrix.length; i++) {
-    if (intInput >= maxBit) {
+    if (number >= maxBit) {
       matrix[i] = 1;
-      intInput -= maxBit;
+      number -= maxBit;
     };
     maxBit /= 2;
   };
-  return parseInt(matrix.join(''));
+  return `Binary: ${matrix.join('')}`;
 };
 
 function factorial(number) {
@@ -83,10 +83,26 @@ function factorial(number) {
 		if (number < 1) return accumulator;
   	return recursiveFactorial(number - 1, number * accumulator);
 	};
-	return recursiveFactorial(number, 1);
+	return `Factorial: ${recursiveFactorial(number, 1)}`;
 };
 
+function digitSwap(number) {
+  let numberString = number + '';
+  if (numberString.length < 2) return numberString;
+  let digitArray = numberString.split('');
+  let resultArray = [];
+  digitArray.forEach(function(digit) {
+    resultArray.unshift(digit)
+  });
+  return `Digit Swapped: ${resultArray.join('')}`;
+}
 
+const bonusFunctions = [
+  toBinary,
+  factorial,
+  toBinary,
+  digitSwap
+];
 
 // UI
 $(document).ready(function() {
@@ -99,8 +115,8 @@ $(document).ready(function() {
     let randomNumber = randomizer(userNumber);
     console.log(randomNumber);
     if (userName && userNumber) {
-      let binary = toBinary(userNumber);
-      $('#binary').text(`${userName} said ${binary}`);
+      let bonus = bonusFunctions[randomNumber](userNumber);
+      $('#binary').text(`${userName} said ${userNumber} (${bonus})`);
       $('#binaryDiv').fadeIn();
     }
     let beepBoopResults = (userName && userNumber) ?
