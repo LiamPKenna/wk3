@@ -1,13 +1,13 @@
 // GLOBAL VARIABLES
 
 // TEMPLATING
-function makeListItem(string) {
-  return `<li>${string}</li>`
-}
+// function makeListItem(string) {
+//   return `<span>${string} - </span>`
+// }
 
 function beepToHtml(beepArray) {
-  const beepListItems = beepArray.map(makeListItem);
-  return `<ul> ${beepListItems.join('')} </ul>`
+  // const beepListItems = beepArray.map(makeListItem);
+  return `<p> ${beepArray.join(' - ')} </p>`
 }
 
 // MAIN LOGIC
@@ -16,7 +16,7 @@ function beepBoop(num, name) {
   var number = parseInt(num);
   if (isNaN(number)) return "Please Enter A Number!";
   const beepArray = [];
-  for (let i = 0; i < number; i++) {
+  for (let i = 0; i <= number; i++) {
     if (/[3]/.test(i)) {
       beepArray.push(`I'm sorry, ${name}. I'm afraid I can't do that.`);
     } else if (/[2]/.test(i)) {
@@ -39,7 +39,10 @@ $(document).ready(function() {
     let userNumber = $("#userNumber").val();
     let userName = $("#userName").val();
     let beepBoopResults = beepBoop(userNumber, userName);
+    $('#results').text('');
+    $('#results').hide();
     $('#results').append(beepBoopResults);
+    $('#results').fadeIn();
   });
 
 });
