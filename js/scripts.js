@@ -50,16 +50,16 @@ function randomizer(number) {
 
 function toBinary(intInput) {
   if (isNaN(intInput)) return intInput;
+  if (intInput < 2) return intInput;
   function getBitAndMatrix(number) {
     let matrix = [0,0];
-    let runningBit = 2;
-    while ((runningBit * 2) <= number) {
-      runningBit *= 2;
+    let currentMaxBit = 2;
+    while ((currentMaxBit * 2) <= number) {
+      currentMaxBit *= 2;
       matrix.push(0);
     }
-    return [runningBit, matrix];
+    return [currentMaxBit, matrix];
   }
-  if (intInput < 2) return intInput;
   let bitMatrixArray = getBitAndMatrix(intInput);
   let maxBit = bitMatrixArray[0];
   let matrix = bitMatrixArray[1];
@@ -88,11 +88,11 @@ $(document).ready(function() {
                           "<h2>PLEASE GIVE ME A NAME AND NUMBER!</h2>";
     let backgroundColor = backgroundColors[randomizer(userNumber)];
     $('body').css('background-color', backgroundColor);
-    $('#results').text('');
+    $('#roboResults').text('');
     $('#results').hide();
     $('#userInput').hide();
     $('#goAgain').fadeIn();
-    $('#results').append(beepBoopResults);
+    $('#roboResults').append(beepBoopResults);
     $('#results').fadeIn();
   });
 

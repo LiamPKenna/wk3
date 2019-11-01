@@ -36,3 +36,13 @@ input {
 body {
   background-color: black;
 }
+
+.robotWrapper {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+}
+
+#robot {
+  width: 100%;
+  background-color: pink;
+}
