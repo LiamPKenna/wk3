@@ -1,21 +1,15 @@
 // GLOBAL VARIABLES
 
 // TEMPLATING
-// function makeListItem(string) {
-//   return `<span>${string} - </span>`
-// }
-
 function beepToHtml(beepArray) {
-  // const beepListItems = beepArray.map(makeListItem);
   return `<p> ${beepArray.join(' - ')} </p>`
 }
 
 // MAIN LOGIC
-
 function beepBoop(num, name) {
-  var number = parseInt(num);
+  let number = parseInt(num);
   if (isNaN(number)) return "Please Enter A Number!";
-  const beepArray = [];
+  let beepArray = [];
   for (let i = 0; i <= number; i++) {
     if (/[3]/.test(i)) {
       beepArray.push(`I'm sorry, ${name}. I'm afraid I can't do that.`);
@@ -27,7 +21,7 @@ function beepBoop(num, name) {
       beepArray.push(i);
     }
   }
-  const beepHtml = beepToHtml(beepArray)
+  let beepHtml = beepToHtml(beepArray)
   return beepHtml;
 }
 
@@ -38,11 +32,21 @@ $(document).ready(function() {
     event.preventDefault();
     let userNumber = $("#userNumber").val();
     let userName = $("#userName").val();
-    let beepBoopResults = beepBoop(userNumber, userName);
+    let beepBoopResults = (userName && userNumber) ?
+                          beepBoop(userNumber, userName) :
+                          "<h2>PLEASE GIVE ME A NAME AND NUMBER!</h2>";
     $('#results').text('');
     $('#results').hide();
+    $('#userInput').hide();
+    $('#goAgain').fadeIn();
     $('#results').append(beepBoopResults);
     $('#results').fadeIn();
+  });
+
+  $('#goAgain').click(function() {
+    $('#goAgain').hide();
+    $('#results').hide();
+    $('#userInput').fadeIn();
   });
 
 });
