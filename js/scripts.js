@@ -97,10 +97,20 @@ function digitSwap(number) {
   return `Digit Swapped: ${resultArray.join('')}`;
 }
 
+function randomMath(number) {
+  let results = [
+    `Square Root: ${Math.sqrt(number)}`,
+    `Cube Root: ${Math.cbrt(number)}`,
+    `Cubed: ${number * number * number}`,
+    `Cosine: ${Math.cos(number)}`
+  ];
+  return results[Math.round(Math.random() * 3)];
+}
+
 const bonusFunctions = [
   toBinary,
   factorial,
-  toBinary,
+  randomMath,
   digitSwap
 ];
 
