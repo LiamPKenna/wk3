@@ -37,7 +37,7 @@ function beepBoop(number, name, reversed) {
 }
 
 function randomizer(number) {
-  let random = Math.round(Math.random() * 4);
+  let random = Math.round(Math.random() * 3);
   if (Math.round(Math.random()) === 0 && number) {
     if (number % 2 === 0) {
       return 0;
@@ -116,8 +116,8 @@ $(document).ready(function() {
     console.log(randomNumber);
     if (userName && userNumber) {
       let bonus = bonusFunctions[randomNumber](userNumber);
-      $('#binary').text(`${userName} said ${userNumber} (${bonus})`);
-      $('#binaryDiv').fadeIn();
+      $('#bonus').text(`${userName} said ${userNumber} (${bonus})`);
+      $('#bonusDiv').fadeIn();
     }
     let beepBoopResults = (userName && userNumber) ?
                           beepBoop(userNumber, userName, reverse) :
@@ -134,7 +134,7 @@ $(document).ready(function() {
 
   $('#goAgain').click(function() {
     $('#goAgain').hide();
-    $('#binaryDiv').hide();
+    $('#bonusDiv').hide();
     $('#results').hide();
     $('#userInput').fadeIn();
   });
