@@ -113,7 +113,6 @@ $(document).ready(function() {
     let userName = $("#userName").val();
     let reverse = $('#reverse').is(":checked");
     let randomNumber = randomizer(userNumber);
-    console.log(randomNumber);
     if (userName && userNumber) {
       let bonus = bonusFunctions[randomNumber](userNumber);
       $('#bonus').text(`${userName} said ${userNumber} (${bonus})`);
@@ -136,6 +135,7 @@ $(document).ready(function() {
     $('#goAgain').hide();
     $('#bonusDiv').hide();
     $('#results').hide();
+    $('.footer').hide();
     $('#userInput').fadeIn();
   });
 
