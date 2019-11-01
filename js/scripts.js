@@ -14,7 +14,7 @@ function beepToHtml(beepArray) {
 const robotText = {
   1: "Beep!",
   2: "Boop!",
-  3: function(name) { return `I'm sorry, ${name}. I'm afraid I can't do that.` }
+  3: function(name) {return `I'm sorry, ${name}. I'm afraid I can't do that.`}
 };
 
 // MAIN LOGIC
@@ -48,12 +48,39 @@ function randomizer(number) {
   }
 }
 
+function toBinary(intInput) {
+  if (isNaN(intInput)) return intInput;
+  function getBitAndMatrix(number) {
+    let matrix = [0,0];
+    let runningBit = 2;
+    while ((runningBit * 2) <= number) {
+      runningBit *= 2;
+      matrix.push(0);
+    }
+    return [runningBit, matrix];
+  }
+  if (intInput < 2) return intInput;
+  let bitMatrixArray = getBitAndMatrix(intInput);
+  let maxBit = bitMatrixArray[0];
+  let matrix = bitMatrixArray[1];
+  for (var i = 0; i < matrix.length; i++) {
+    if (intInput >= maxBit) {
+      matrix[i] = 1;
+      intInput -= maxBit;
+    };
+    maxBit /= 2;
+  };
+  return parseInt(matrix.join(''));
+};
+
 // UI
 $(document).ready(function() {
 
   $("#userInput").submit(function(event) {
     event.preventDefault();
     let userNumber = parseInt($("#userNumber").val());
+    let binary = toBinary(userNumber);
+    console.log(binary);
     let userName = $("#userName").val();
     let reverse = $('#reverse').is(":checked");
     let beepBoopResults = (userName && userNumber) ?
