@@ -87,7 +87,19 @@ body {
   }
 }
 
+.footer {
+  display: none;
+  height: 40px;
+  width: 100%;
+  background-color: pink;
+  position: fixed;
+  bottom: 0pt;
+  left: 0pt;
+}
 
+.footer p {
+  overflow: visible;
+}
 
 @media (max-width: 767px) {
   .robotWrapper {

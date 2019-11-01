@@ -125,11 +125,11 @@ $(document).ready(function() {
     let backgroundColor = backgroundColors[randomNumber];
     $('body').css('background-color', backgroundColor);
     $('#roboResults').text('');
-    $('#results').hide();
     $('#userInput').hide();
     $('#goAgain').fadeIn();
     $('#roboResults').append(beepBoopResults);
-    $('#results').fadeIn();
+    $('.footer').text('').append(beepBoopResults).fadeIn();
+    $('#results').hide().fadeIn();
   });
 
   $('#goAgain').click(function() {
