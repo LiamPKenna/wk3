@@ -4,12 +4,29 @@
 
 // MAIN LOGIC
 
+function beepBoop(num) {
+  var number = parseInt(num);
+  if (isNaN(number)) return "Please Enter A Number!";
+  const beepArray = [];
+  for (let i = 0; i < number; i++) {
+    beepArray.push(i);
+    // if (/[3]/.test(i)) {
+    //   beepArray.push("I'm sorry, Dave. I'm afraid I can't do that.");
+    // } else if (/[2]/.test(i)) {
+    //   beepArray.push("Boop!");
+    // } else if (/[1]/.test(i)) {
+    //   beepArray.push("Beep!");
+    // }
+  }
+  return beepArray
+}
+
 // UI
 $(document).ready(function() {
 
   $("#userInput").submit(function(event) {
     event.preventDefault();
-    $('#results').append('');
+    $('#results').text(beepBoop(25));
   });
 
 });
