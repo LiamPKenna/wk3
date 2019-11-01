@@ -1,16 +1,27 @@
+p {
+  font-family: monospace;
+  font-size: 20px;
+}
+
 .header {
   margin-top: 5%;
 }
 
 #results {
   display: none;
+  margin-bottom: 30px;
+  padding: 30px;
+}
+
+#roboResults {
+  padding: 20px;
 }
 
 #goAgain {
   display: none;
 }
 
-#userInput, .header, h3 {
+#userInput, .header, h3, input {
   text-align: center;
 }
 
@@ -25,10 +36,13 @@ input {
 .card {
   margin-top: 30px;
   padding: 30px;
+  background-color: black;
+  color: green;
 }
 
 .reverse {
   margin-top: 30px;
+  color: black;
 }
 
 body {
