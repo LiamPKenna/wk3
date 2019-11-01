@@ -73,15 +73,12 @@ body {
 }
 
 @-webkit-keyframes turnwhite {
-
   0% {
     color: green;
   }
-
   70% {
     color: green;
   }
-
   100% {
     color: white;
   }
@@ -91,14 +88,36 @@ body {
   display: none;
   height: 40px;
   width: 100%;
-  background-color: pink;
   position: fixed;
   bottom: 0pt;
   left: 0pt;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.67);
+  padding: 5px;
 }
 
+/* Animation solution based on https://stackoverflow.com/questions/47552583/auto-text-bouncing-back-and-fourth-css-like-marquee-for-long-text-label */
+
 .footer p {
-  overflow: visible;
+  display: inline-flex;
+  white-space: nowrap;
+  animation: scrollText 100s linear infinite;
+  color: darkgreen;
+  font-family: monospace;
+  font-weight: lighter;
+  font-variant: small-caps;
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(calc(-100% - 3000px));
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 @media (max-width: 767px) {
