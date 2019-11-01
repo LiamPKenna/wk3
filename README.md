@@ -16,14 +16,16 @@ _For example:_
 
 | Input:  | Output:   |
 |---|---|
-|4| 0 - Beep! - Boop! - I'm sorry... - 4 |
+|"4"| 0 - Beep! - Boop! - I'm sorry... - 4 |
+|"5"| 0 - Beep! - Boop! - I'm sorry... - 4 - 5 |
 
 _Bonus content will also be shown based on coin-flip logic that either uses random number generation or decides based on if the number input is divisible by 2, 3, or 5. This same logic also updates the background color of the page_
 
 _Possible bonus representations of the user's number:_
 
-* _As Binary_
+* _As binary_
 * _As its computed factorial_
+* _As a random math result (Square Root / Cubed Root / Cubed / Cosine)_
 * _With digits reversed_
 
 ## Setup/Installation Requirements
