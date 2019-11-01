@@ -3,6 +3,10 @@ p {
   font-size: 20px;
 }
 
+h3 {
+  font-variant: small-caps;
+}
+
 .header {
   margin-top: 5%;
 }
@@ -21,7 +25,7 @@ p {
   display: none;
 }
 
-#userInput, .header, h3, input {
+#userInput, .header, h2, h3, input {
   text-align: center;
 }
 
