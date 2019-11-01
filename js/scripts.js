@@ -11,16 +11,22 @@ function beepToHtml(beepArray) {
   return `<p> ${beepArray.join(' - ')} </p>`
 }
 
+const robotText = {
+  1: "Beep!",
+  2: "Boop!",
+  3: function(name) { return `I'm sorry, ${name}. I'm afraid I can't do that.` }
+};
+
 // MAIN LOGIC
 function beepBoop(number, name, reversed) {
   let beepArray = [];
   for (let i = 0; i <= number; i++) {
     if (/[3]/.test(i)) {
-      beepArray.push(`I'm sorry, ${name}. I'm afraid I can't do that.`);
+      beepArray.push(robotText[3](name));
     } else if (/[2]/.test(i)) {
-      beepArray.push("Boop!");
+      beepArray.push(robotText[2]);
     } else if (/[1]/.test(i)) {
-      beepArray.push("Beep!");
+      beepArray.push(robotText[1]);
     } else {
       beepArray.push(i);
     }
