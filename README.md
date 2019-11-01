@@ -6,7 +6,17 @@
 
 ## Description
 
-_This site is a simple web application that..._
+_This site is a simple web application that takes a users name and a number, then returns all numbers from 0 to their input. Any numbers including 1, 2, or 3 will be replaced by the following logic:_
+
+* _Any number containing the digit 3 will be replaced with "I'm sorry, {USER NAME}. I'm afraid I can't do that."_
+* _Any number containing 2 but not 3 will be replaced with "Boop!"_
+* _Any number containing 1 but not 2 or 3 will be replaced with "Beep!"_
+
+_For example:_
+
+| Input:  | Output:   |
+|---|---|
+|4| 0 - Beep! - Boop - I'm sorry... - 4 |
 
 ## Setup/Installation Requirements
 
