@@ -64,6 +64,25 @@ body {
   display: none;
 }
 
+.flash-white {
+  -webkit-animation: turnwhite 2s infinite alternate;
+}
+
+@-webkit-keyframes turnwhite {
+
+  0% {
+    color: green;
+  }
+
+  70% {
+    color: green;
+  }
+
+  100% {
+    color: white;
+  }
+}
+
 
 
 @media (max-width: 767px) {
